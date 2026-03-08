@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprimerie Augagneur | Votre imprimeur 100% local &agrave; Villefranche-sur-Sa&ocirc;ne</title>
+    <meta name="description" content="Imprimerie Augagneur &agrave; Villefranche-sur-Sa&ocirc;ne (69). Impression offset et num&eacute;rique, &eacute;co-responsable. Documents commerciaux, administratifs, publicitaires. Devis gratuit.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00AEEF;
+            --magenta: #EC008C;
+            --jaune: #FFF200;
+            --noir: #1A1A1A;
+            --gris: #5C5C5C;
+            --gris-clair: #F5F5F5;
+            --blanc: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--noir);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Sora', sans-serif; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: var(--blanc);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo { height: 36px; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--gris);
+            font-size: 0.9rem; font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--cyan); }
+        .nav-cta {
+            background: var(--cyan); color: var(--blanc) !important;
+            padding: 0.6rem 1.4rem; border-radius: 6px;
+            font-weight: 600 !important;
+        }
+        .nav-cta:hover { background: #0095cc !important; }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; background: none; border: none; padding: 5px;
+        }
+        .hamburger span {
+            width: 24px; height: 2px; background: var(--noir);
+            transition: 0.3s;
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 70px;
+            background: var(--noir);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,174,239,0.15), rgba(236,0,140,0.1), rgba(255,242,0,0.08));
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .hero h1 {
+            font-size: 2.8rem; color: var(--blanc);
+            margin-bottom: 1rem; line-height: 1.2;
+        }
+        .hero h1 span { color: var(--cyan); }
+        .hero p {
+            font-size: 1.15rem; color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .hero-badges {
+            display: flex; gap: 1.5rem; justify-content: center;
+            flex-wrap: wrap; margin-bottom: 2rem;
+        }
+        .hero-badge {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: rgba(255,255,255,0.9); font-size: 0.9rem;
+        }
+        .hero-badge .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+        }
+        .dot-c { background: var(--cyan); }
+        .dot-m { background: var(--magenta); }
+        .dot-j { background: var(--jaune); }
+        .hero-cta {
+            display: inline-block;
+            background: var(--cyan); color: var(--blanc);
+            padding: 1rem 2.5rem; border-radius: 8px;
+            text-decoration: none; font-weight: 700; font-size: 1.05rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,174,239,0.3);
+        }
+
+        /* BANNER IMAGE */
+        .banner {
+            width: 100%;
+            overflow: hidden;
+        }
+        .banner img {
+            width: 100%; height: 280px;
+            object-fit: cover;
+        }
+
+        /* SECTIONS */
+        section { padding: 4.5rem 2rem; }
+
+        .section-title {
+            text-align: center; margin-bottom: 3rem;
+        }
+        .section-title h2 {
+            font-size: 2rem; margin-bottom: 0.5rem;
+            color: var(--noir);
+        }
+        .section-title .accent-bar {
+            display: flex; gap: 4px; justify-content: center;
+            margin-top: 0.8rem;
+        }
+        .accent-bar span {
+            width: 30px; height: 4px; border-radius: 2px;
+        }
+        .section-title p {
+            color: var(--gris); font-size: 1rem;
+            max-width: 600px; margin: 1rem auto 0;
+        }
+
+        /* SERVICES */
+        .services { background: var(--blanc); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem; max-width: 1100px; margin: 0 auto;
+        }
+        .service-card {
+            background: var(--gris-clair);
+            border-radius: 12px; padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid transparent;
+        }
+        .service-card:nth-child(1) { border-left-color: var(--cyan); }
+        .service-card:nth-child(2) { border-left-color: var(--magenta); }
+        .service-card:nth-child(3) { border-left-color: var(--jaune); }
+        .service-card:nth-child(4) { border-left-color: var(--cyan); }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .service-card h3 {
+            font-size: 1.1rem; margin-bottom: 0.8rem;
+            font-family: 'Sora', sans-serif;
+        }
+        .service-card p {
+            color: var(--gris); font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* REALISATIONS */
+        .realisations { background: var(--gris-clair); }
+        .real-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+        }
+        .real-card {
+            border-radius: 10px; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            background: var(--blanc);
+        }
+        .real-card img {
+            width: 100%; height: 200px; object-fit: cover;
+        }
+        .real-card .real-caption {
+            padding: 1rem 1.2rem;
+        }
+        .real-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+        .real-card p { font-size: 0.85rem; color: var(--gris); }
+
+        /* ECO */
+        .eco { background: var(--blanc); }
+        .eco-content {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 3rem; align-items: center;
+        }
+        .eco-text h3 {
+            font-size: 1.3rem; margin-bottom: 1rem;
+            color: var(--noir);
+        }
+        .eco-list {
+            list-style: none;
+        }
+        .eco-list li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gris);
+            font-size: 0.9rem;
+        }
+        .eco-list li::before {
+            content: '';
+            position: absolute; left: 0; top: 50%;
+            transform: translateY(-50%);
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #4CAF50;
+        }
+        .eco-visual {
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            border-radius: 12px; padding: 2.5rem;
+            text-align: center;
+        }
+        .eco-visual .eco-icon {
+            font-size: 3rem; margin-bottom: 1rem;
+        }
+        .eco-visual p {
+            font-size: 1rem; color: #2E7D32;
+            font-weight: 600;
+        }
+        .eco-visual .eco-sub {
+            font-weight: 400; font-size: 0.85rem;
+            color: #4CAF50; margin-top: 0.3rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--noir);
+            color: var(--blanc);
+        }
+        .contact .section-title h2 { color: var(--blanc); }
+        .contact .section-title p { color: rgba(255,255,255,0.7); }
+        .contact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; max-width: 1000px; margin: 0 auto;
+        }
+        .contact-item {
+            text-align: center; padding: 1.5rem;
+        }
+        .contact-item .contact-icon {
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem; font-size: 1.3rem;
+        }
+        .contact-item:nth-child(1) .contact-icon { background: rgba(0,174,239,0.15); color: var(--cyan); }
+        .contact-item:nth-child(2) .contact-icon { background: rgba(236,0,140,0.15); color: var(--magenta); }
+        .contact-item:nth-child(3) .contact-icon { background: rgba(255,242,0,0.15); color: var(--jaune); }
+        .contact-item h3 {
+            font-size: 1rem; margin-bottom: 0.5rem;
+        }
+        .contact-item p {
+            color: rgba(255,255,255,0.7); font-size: 0.9rem;
+        }
+        .contact-item a {
+            color: var(--cyan); text-decoration: none;
+        }
+
+        /* HORAIRES */
+        .horaires {
+            margin-top: 2rem; text-align: center;
+            max-width: 500px; margin-left: auto; margin-right: auto;
+            padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .horaires h3 {
+            font-size: 0.95rem; margin-bottom: 0.8rem;
+            color: var(--cyan);
+        }
+        .horaires p {
+            color: rgba(255,255,255,0.6); font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #111;
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+        .footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.active {
+                display: flex; flex-direction: column;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--blanc);
+                padding: 1.5rem 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                gap: 1rem;
+            }
+            .hamburger { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 3.5rem 1.5rem; }
+            .eco-content { grid-template-columns: 1fr; }
+            .banner img { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav class="nav">
+        <img src="img/logo.png" alt="Imprimerie Augagneur" class="nav-logo">
+        <div class="nav-links" id="navLinks">
+            <a href="#services">Savoir-faire</a>
+            <a href="#realisations">R&eacute;alisations</a>
+            <a href="#eco">Engagements</a>
+            <a href="#contact" class="nav-cta">Demander un devis</a>
+        </div>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Votre imprimeur <span>100% local</span> et &eacute;co-responsable</h1>
+            <p>Depuis Villefranche-sur-Sa&ocirc;ne, nous imprimons vos documents avec exigence, proximit&eacute; et respect de l'environnement.</p>
+            <div class="hero-badges">
+                <div class="hero-badge"><span class="dot dot-c"></span> Impression offset</div>
+                <div class="hero-badge"><span class="dot dot-m"></span> Impression num&eacute;rique</div>
+                <div class="hero-badge"><span class="dot dot-j"></span> &Eacute;co-responsable</div>
+            </div>
+            <a href="#contact" class="hero-cta">Demander un devis</a>
+        </div>
+    </section>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <img src="img/bandeau.jpg" alt="Notre exp&eacute;rience au service de vos exigences - Imprimerie Augagneur">
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Notre savoir-faire</h2>
+            <div class="accent-bar">
+                <span style="background:var(--cyan)"></span>
+                <span style="background:var(--magenta)"></span>
+                <span style="background:var(--jaune)"></span>
+            </div>
+            <p>Tous les moyens sont bons pour faire bonne impression. Nous vous accompagnons de la conception &agrave; la livraison.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Documents commerciaux</h3>
+                <p>Plaquettes, brochures, catalogues, d&eacute;pliants, chemises &agrave; rabats, cartes commerciales, mailings, billetterie, programmes.</p>
+            </div>
+            <div class="service-card">
+                <h3>Documents administratifs</h3>
+                <p>Lettres en-t&ecirc;te, enveloppes, cartes de visite, factures, bons de commande, carnets autocopiants, invitations, livrets.</p>
+            </div>
+            <div class="service-card">
+                <h3>Documents publicitaires</h3>
+                <p>Flyers, affiches, sets de table, stop-rayon, magazines, fiches produit, cartes de fid&eacute;lit&eacute;, cartes postales, sous-mains.</p>
+            </div>
+            <div class="service-card">
+                <h3>Documents techniques</h3>
+                <p>Notices, cavaliers, &eacute;tiquettes, fiches techniques, cartonnettes, autocollants, carnets perfor&eacute;s et num&eacute;rot&eacute;s, liasses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REALISATIONS -->
+    <section class="realisations" id="realisations">
+        <div class="section-title">
+            <h2>Nos r&eacute;alisations</h2>
+            <div class="accent-bar">
+                <span style="background:var(--cyan)"></span>
+                <span style="background:var(--magenta)"></span>
+                <span style="background:var(--jaune)"></span>
+            </div>
+            <p>Collectivit&eacute;s, entreprises, associations et agences nous font confiance pour leurs impressions.</p>
+        </div>
+        <div class="real-grid">
+            <div class="real-card">
+                <img src="img/bulletins.jpg" alt="Bulletins municipaux imprim&eacute;s par Augagneur">
+                <div class="real-caption">
+                    <h3>Bulletins municipaux</h3>
+                    <p>Impression pour les collectivit&eacute;s locales du Beaujolais</p>
+                </div>
+            </div>
+            <div class="real-card">
+                <img src="img/fb-bulletin.jpg" alt="R&eacute;alisations graphiques Imprimerie Augagneur">
+                <div class="real-caption">
+                    <h3>Supports de communication</h3>
+                    <p>Affiches, programmes, d&eacute;pliants pour &eacute;v&eacute;nements et entreprises</p>
+                </div>
+            </div>
+            <div class="real-card">
+                <img src="img/tract-local.jpg" alt="Tract imprimez local - Augagneur Villefranche">
+                <div class="real-caption">
+                    <h3>Imprimez local</h3>
+                    <p>100% de notre production est r&eacute;alis&eacute;e &agrave; Villefranche-sur-Sa&ocirc;ne</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECO -->
+    <section class="eco" id="eco">
+        <div class="section-title">
+            <h2>Nos engagements &eacute;co-responsables</h2>
+            <div class="accent-bar">
+                <span style="background:#4CAF50"></span>
+                <span style="background:#66BB6A"></span>
+                <span style="background:#81C784"></span>
+            </div>
+        </div>
+        <div class="eco-content">
+            <div class="eco-text">
+                <h3>Une imprimerie engag&eacute;e pour l'environnement</h3>
+                <ul class="eco-list">
+                    <li>Encres offset v&eacute;g&eacute;tales sans huile min&eacute;rale</li>
+                    <li>Papiers certifi&eacute;s PEFC, FSC ou 100% recycl&eacute;s</li>
+                    <li>Livraisons en carton, sans film plastique</li>
+                    <li>Tri et valorisation de tous les d&eacute;chets</li>
+                    <li>Stockage s&eacute;curis&eacute; des produits</li>
+                    <li>Adh&eacute;rent Trackd&eacute;chets (Minist&egrave;re de la Transition &Eacute;cologique)</li>
+                    <li>En conformit&eacute; avec la r&eacute;glementation REACH</li>
+                </ul>
+            </div>
+            <div class="eco-visual">
+                <div class="eco-icon">&#127793;</div>
+                <p>Imprimeur &eacute;co-responsable</p>
+                <p class="eco-sub">Beaujolais Be Current</p>
+                <img src="img/certification.png" alt="Certification Beaujolais" style="margin-top:1rem;height:30px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Contactez-nous</h2>
+            <div class="accent-bar">
+                <span style="background:var(--cyan)"></span>
+                <span style="background:var(--magenta)"></span>
+                <span style="background:var(--jaune)"></span>
+            </div>
+            <p>Une demande de devis, une question ? Nous vous r&eacute;pondons sous 24h.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon">&#128205;</div>
+                <h3>Adresse</h3>
+                <p>704 rue Lamartine<br>69400 Villefranche-sur-Sa&ocirc;ne</p>
+                <p style="margin-top:0.3rem;font-size:0.8rem;">A 500m de l'A6, sortie 31.2</p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">&#128222;</div>
+                <h3>T&eacute;l&eacute;phone</h3>
+                <p><a href="tel:0474651285">04 74 65 12 85</a></p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">&#9993;</div>
+                <h3>Email</h3>
+                <p>Devis : <a href="mailto:devis@imprimerieaugagneur.fr">devis@imprimerieaugagneur.fr</a></p>
+                <p>Commercial : <a href="mailto:com@imprimerieaugagneur.fr">com@imprimerieaugagneur.fr</a></p>
+            </div>
+        </div>
+        <div class="horaires" style="margin-top:2rem;">
+            <h3>Horaires d'ouverture</h3>
+            <p>
+                Lundi au jeudi : 8h - 12h / 13h30 - 18h<br>
+                Vendredi : 8h - 12h / 14h - 17h
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Imprimerie Augagneur - 704 rue Lamartine, 69400 Villefranche-sur-Sa&ocirc;ne - <a href="tel:0474651285">04 74 65 12 85</a></p>
+    </footer>
+</body>
+</html>
